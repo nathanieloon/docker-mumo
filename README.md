@@ -17,3 +17,6 @@ Edit mumo.ini and copy config files from `modules_available` to `modules_enabled
 ```
 docker start mumo
 ```
+
+## Custom build
+Designed to pull the modules from [mumo-modules](https://github.com/nathanieloon/mumo-modules) and load them in for maximum laziness.
