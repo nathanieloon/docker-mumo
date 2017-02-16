@@ -1,8 +1,9 @@
 FROM phusion/baseimage:0.9.11
 ENV pword defaultpass
+ENV youtube_key defaultkey
 
 RUN apt-get update
-RUN apt-get install -y python git python-zeroc-ice wget
+RUN apt-get install -y python git python-zeroc-ice wget python-beautifulsoup
 RUN wget https://bootstrap.pypa.io/ez_setup.py -O - | python
 RUN easy_install isodate requests
 
@@ -20,4 +21,6 @@ RUN mv mumo-modules modules && mkdir modules-enabled
 RUN cd modules-available && ln -s ../modules/*.ini .
 RUN cd modules-enabled && ln -s ../modules/*.ini .
 RUN rm modules-enabled/dbintegrate.ini
+ADD key.py /mumo/modules/key.py
+RUN chmod 755 /mumo/modules/key.py
 CMD ["/tmp/start.sh"]
